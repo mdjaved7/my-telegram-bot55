@@ -7,7 +7,7 @@ from telethon import TelegramClient, events
 # --- CONFIGURATION ---
 API_ID = 34801155        
 API_HASH = 'd7846c4d0f2c343dd5b67c80d45409e8' 
-BOT_TOKEN = '8808145635:AAF-T-nhhmaiIYWPxtbFfa-H5CnQXbFhsdc' 
+BOT_TOKEN = '8961976960:AAHClYL_3wisXbO3eYsnISMe3xAF5Js0hL8' 
 
 TARGET_CHANNEL = -1003895453478  
 CHANNEL_TEXT_NAME = "@AllstoryFM2"  
