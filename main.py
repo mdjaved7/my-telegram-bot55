@@ -4,6 +4,21 @@ import json
 import glob
 from telethon import TelegramClient, events
 
+from flask import Flask
+from threading import Thread
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Bot is alive!"
+
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+t = Thread(target=run)
+t.start()
+
 # --- CONFIGURATION ---
 API_ID = 34801155        
 API_HASH = 'd7846c4d0f2c343dd5b67c80d45409e8' 
