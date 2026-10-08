@@ -1,4 +1,3 @@
-
 require("dotenv").config();
 
 const express = require("express");
@@ -23,6 +22,12 @@ app.use("/api", rateLimit({
   limit: 300
 }));
 
+// Root aur Favicon routes
+app.get("/", (req, res) => {
+  res.send("All Story FM API is running");
+});
+app.get("/favicon.ico", (req, res) => res.status(204).end());
+
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok" });
 });
@@ -44,10 +49,5 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 
 connectDB()
-  .then(() => app.listen(PORT, () => {
-    console.log(`All Story FM API listening on ${PORT}`);
-  }))
-  .catch(err => {
-    console.error("Startup failed", err);
-    process.exit(1);
-  });
+  .then(() => app.
+    
