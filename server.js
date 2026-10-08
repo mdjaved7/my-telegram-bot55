@@ -9,6 +9,9 @@ const connectDB = require("./config/db");
 
 const app = express();
 
+// Database connect karein
+connectDB().catch(err => console.error("MongoDB connection error:", err));
+
 app.use(helmet());
 app.use(cors({
   origin: process.env.CLIENT_ORIGIN
@@ -17,6 +20,7 @@ app.use(cors({
 }));
 app.use(express.json({ limit: "100kb" }));
 app.use(morgan("dev"));
+
 app.use("/api", rateLimit({
   windowMs: 15 * 60 * 1000,
   limit: 300
@@ -26,6 +30,7 @@ app.use("/api", rateLimit({
 app.get("/", (req, res) => {
   res.send("All Story FM API is running");
 });
+
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 
 app.get("/api/health", (req, res) => {
@@ -36,7 +41,7 @@ app.use("/api/stories", require("./routes/storyRoutes"));
 app.use("/api/payments", require("./routes/paymentRoutes"));
 app.use("/api/admin", require("./routes/adminRoutes"));
 
-// Generic error handler; avoid leaking internal errors.
+// Generic error handler
 app.use((err, req, res, next) => {
   console.error(err);
   if (res.headersSent) return next(err);
@@ -46,8 +51,5 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 5000;
-
-connectDB()
-  .then(() => app.
-    
+// Vercel serverless environment ke liye Express app export karein
+module.exports = app;
