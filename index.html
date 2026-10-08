@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Story FM - Premium Audio Stories</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0F0518, #000000);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        h1 span {
+            color: #FFD700;
+        }
+        p {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 30px;
+        }
+        .banner {
+            border: 2px solid #FFD700;
+            border-radius: 30px;
+            padding: 10px 30px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 40px;
+            color: white;
+        }
+        /* React Admin panel mount point hide until used */
+        #root:empty {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Default Landing Page Content -->
+    <div id="landing-content">
+        <h1>ALL STORY <span>FM</span></h1>
+        <div class="banner">60+ AUDIO STORIES</div>
+        <p>Listen Anytime, Anywhere. High Quality Audio Experience.</p>
+        <p style="font-size: 0.9rem; color: #888; margin-top: 50px;">Admin Panel & API Server is Active.</p>
+    </div>
+
+    <!-- React App yahan render hoga agar aap admin panel connect karenge -->
+    <div id="root"></div>
+
+</body>
+</html>
