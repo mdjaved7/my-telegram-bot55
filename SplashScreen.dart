@@ -14,8 +14,13 @@ class _SplashScreenState extends State<SplashScreen> {
 
   _navigateToHome() async {
     // Simulate loading time (e.g., fetching user session or initial stories)
-    await Future.delayed(Duration(seconds: 3));
-    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+    await Future.delayed(const Duration(seconds: 3));
+    
+    // Navigation line ab active hai
+    Navigator.pushReplacement(
+      context, 
+      MaterialPageRoute(builder: (context) => HomeScreen()),
+    );
   }
 
   @override
@@ -84,7 +89,7 @@ class _SplashScreenState extends State<SplashScreen> {
             
             const SizedBox(height: 20),
             
-            // "60+ AUDIO STORIES" Banner[span_1](start_span)[span_1](end_span)
+            // "60+ AUDIO STORIES" Banner
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
               decoration: BoxDecoration(
@@ -115,7 +120,7 @@ class _SplashScreenState extends State<SplashScreen> {
             
             const SizedBox(height: 40),
             
-            // Bottom Features Grid (Matches the poster footer)[span_2](start_span)[span_2](end_span)
+            // Bottom Features Grid
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30),
               child: Row(
@@ -149,6 +154,25 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
         ),
       ],
+    );
+  }
+}
+
+// Dummy HomeScreen (Taaki code bina error ke run ho sake)
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('All Story FM - Home'),
+        backgroundColor: const Color(0xFF0F0518),
+      ),
+      body: const Center(
+        child: Text(
+          'Welcome to Home Screen!',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
+      ),
     );
   }
 }
