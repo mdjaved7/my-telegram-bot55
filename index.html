@@ -40,23 +40,57 @@
             margin-bottom: 40px;
             color: white;
         }
-        /* React Admin panel mount point hide until used */
+        
+        /* Naya Button Style */
+        .start-btn {
+            background-color: #FFD700;
+            color: #0F0518;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            margin-bottom: 20px;
+        }
+        .start-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+        }
+        .start-btn:active {
+            transform: scale(0.95);
+        }
+
         #root:empty {
             display: none;
         }
     </style>
 </head>
 <body>
-    <!-- Default Landing Page Content -->
     <div id="landing-content">
         <h1>ALL STORY <span>FM</span></h1>
         <div class="banner">60+ AUDIO STORIES</div>
         <p>Listen Anytime, Anywhere. High Quality Audio Experience.</p>
+        
+        <!-- Naya Button Add Kiya Gaya Hai -->
+        <button class="start-btn" onclick="startApp()">Start Listening</button>
+        
         <p style="font-size: 0.9rem; color: #888; margin-top: 50px;">Admin Panel & API Server is Active.</p>
     </div>
 
-    <!-- React App yahan render hoga agar aap admin panel connect karenge -->
     <div id="root"></div>
 
+    <script>
+        // Button click hone par kya hoga, wo yahan define karein
+        function startApp() {
+            // Agar aapka app kisi aur link par hai, toh ise use karein:
+            // window.location.href = 'AAPKE_APP_KA_LINK_YAHAN_DAALEIN';
+            
+            // Abhi ke liye ek simple alert dega taaki pata chale button kaam kar raha hai
+            alert("Welcome to All Story FM! App is loading...");
+        }
+    </script>
 </body>
 </html>
