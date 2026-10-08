@@ -1,0 +1,72 @@
+
+import { useState } from "react";
+import { api } from "../api";
+
+export default function AddEpisode({ token }) {
+  const [storyId, setStoryId] = useState("");
+  const [ep, setEp] = useState({
+    ep_no: 1, title: "", audio_url: "", is_free: true
+  });
+  const [message, setMessage] = useState("");
+
+  async function submit(e) {
+    e.preventDefault();
+    try {
+      await api(`/admin/stories/${storyId}/episodes`, token, {
+        method: "POST",
+        body: JSON.stringify({
+          ...ep,
+          ep_no: Number(ep.ep_no),
+          published: true
+        })
+      });
+      setMessage("Episode added");
+    } catch (err) {
+      setMessage(err.message);
+    }
+  }
+
+  return (
+    <section>
+      <h2>Add Episode</h2>
+      <form onSubmit={submit}>
+        <p>
+          <label>Story ID<br />
+            <input value={storyId} onChange={e =>
+              setStoryId(e.target.value)} required />
+          </label>
+        </p>
+        <p>
+          <label>Episode number<br />
+            <input type="number" min="1" value={ep.ep_no}
+              onChange={e => setEp({ ...ep, ep_no: e.target.value })}
+              required />
+          </label>
+        </p>
+        <p>
+          <label>Episode title<br />
+            <input value={ep.title} onChange={e =>
+              setEp({ ...ep, title: e.target.value })} required />
+          </label>
+        </p>
+        <p>
+          <label>Audio URL<br />
+            <input type="url" value={ep.audio_url}
+              onChange={e => setEp({
+                ...ep, audio_url: e.target.value
+              })} required />
+          </label>
+        </p>
+        <label>
+          <input type="checkbox" checked={ep.is_free}
+            onChange={e => setEp({
+              ...ep, is_free: e.target.checked
+            })} />
+          Free episode
+        </label>
+        <p><button type="submit">Save Episode</button></p>
+      </form>
+      <p role="status">{message}</p>
+    </section>
+  );
+}
