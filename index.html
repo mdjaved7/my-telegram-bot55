@@ -41,7 +41,6 @@
             color: white;
         }
         
-        /* Naya Button Style */
         .start-btn {
             background-color: #FFD700;
             color: #0F0518;
@@ -59,10 +58,30 @@
             transform: scale(1.05);
             box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
         }
-        .start-btn:active {
-            transform: scale(0.95);
+
+        .admin-link {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 50px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .admin-link:hover {
+            color: #FFD700;
         }
 
+        /* Admin Panel Hide Rahega Default */
+        #admin-panel {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #FFD700;
+            border-radius: 15px;
+            background: rgba(255, 215, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+        
         #root:empty {
             display: none;
         }
@@ -74,22 +93,46 @@
         <div class="banner">60+ AUDIO STORIES</div>
         <p>Listen Anytime, Anywhere. High Quality Audio Experience.</p>
         
-        <!-- Naya Button Add Kiya Gaya Hai -->
+        <!-- Pocket FM jaisa page kholne ke liye button -->
         <button class="start-btn" onclick="startApp()">Start Listening</button>
         
-        <p style="font-size: 0.9rem; color: #888; margin-top: 50px;">Admin Panel & API Server is Active.</p>
+        <br>
+        <!-- Admin Panel Access Link -->
+        <p class="admin-link" onclick="openAdmin()">Admin Panel & API Server is Active (Login Required)</p>
+        
+        <!-- Admin Panel Section (Code dalne par dikhega) -->
+        <div id="admin-panel">
+            <h2 style="color: #FFD700;">Welcome Admin: M.D. Javed</h2>
+            <p>Admin Dashboard unlocked successfully!</p>
+            <!-- React Admin Panel ya baaki admin code yahan load kar sakte hain -->
+            <button class="start-btn" style="font-size: 1rem; padding: 10px 20px;" onclick="alert('React Admin Panel loading...')">Manage Stories</button>
+        </div>
     </div>
 
     <div id="root"></div>
 
     <script>
-        // Button click hone par kya hoga, wo yahan define karein
+        // Start Listening par click karne ka logic
         function startApp() {
-            // Agar aapka app kisi aur link par hai, toh ise use karein:
-            // window.location.href = 'AAPKE_APP_KA_LINK_YAHAN_DAALEIN';
+            // Abhi alert diya hai, agar app ka alag page hai toh redirect laga sakte hain
+            alert("Pocket FM style audio player load ho raha hai...");
+            // Example: window.location.href = '/player'; 
+        }
+
+        // Admin Panel kholne ka logic
+        function openAdmin() {
+            let code = prompt("Kripya Admin Panel Code Darj Karein:");
             
-            // Abhi ke liye ek simple alert dega taaki pata chale button kaam kar raha hai
-            alert("Welcome to All Story FM! App is loading...");
+            if (code != null) {
+                // Code ko thoda flexible rakha hai taaki case ya dots ki wajah se error na aaye
+                let checkCode = code.toLowerCase().trim();
+                if (checkCode === "m.d. javed 786" || checkCode === "md javed 786") {
+                    alert("Access Granted! Welcome M.D. Javed.");
+                    document.getElementById("admin-panel").style.display = "block";
+                } else {
+                    alert("Wrong Code! Access Denied.");
+                }
+            }
         }
     </script>
 </body>
