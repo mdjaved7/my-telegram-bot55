@@ -1,0 +1,6 @@
+{
+  "name": "ApexCommerce & Client Suite",
+  "description": "Modern service booking, digital store, and client portal with secure administrative management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
