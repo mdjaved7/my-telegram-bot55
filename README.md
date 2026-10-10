@@ -1,66 +1,20 @@
-# ApexCommerce & Client Suite
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+</div>
 
-A complete, production-ready Digital Commerce, Blueprint Store, and Client Management Portal with a hidden, high-security Administrative Console.
+# Run and deploy your AI Studio app
 
----
+This contains everything you need to run your app locally.
 
-## 🚀 Quick Start / How to Run
+View your app in AI Studio: https://ai.studio/apps/13824383-be20-4f05-be22-3a4ddcab1616
 
-### 1. Requirements
-- Node.js (version 18 or higher)
-- npm or pnpm or bun
+## Run Locally
 
-### 2. Install Dependencies
-```bash
-npm install
-```
+**Prerequisites:**  Node.js
 
-### 3. Start Development Server
-```bash
-npm run dev
-```
-The application will launch at: **http://localhost:3000** (or your local Vite port).
 
-### 4. Build for Production
-```bash
-npm run build
-```
-
----
-
-## 🔐 Admin Panel Access Details
-
-The Admin Panel is **completely hidden** from standard customers and visitors.
-
-### How to Open the Secret Admin Gate:
-1. **Keyboard Shortcut**: Press `Ctrl + Shift + A` (or `Cmd + Shift + A` on macOS) anywhere on the page.
-2. **URL Access**: Append `#admin` or `?admin=true` to your browser URL (e.g. `http://localhost:3000/#admin`).
-3. **Subtle Footer Trigger**:
-   - Triple-click the copyright dot in the footer, or
-   - Click the discreet **"Staff Gateway"** link located in the footer's bottom-right corner.
-
-### 🔑 Exact Master Admin Password:
-```
-8294991057
-```
-
----
-
-## 🛠️ Included Features
-
-### 👤 Regular User Storefront
-- **Dynamic Catalog**: Full filtering by categories (*Cloud & Infrastructure*, *Design Systems*, *Executive Advisory*, *Security & Compliance*), live search, and sorting.
-- **Product Modal**: Deliverable manifests, technical specs, and quantity controls.
-- **Shopping Cart & Checkout**: Slide-out cart drawer, discount coupon engine (`APEX20` for 20% off, `WELCOME10` for 10% off), VAT calculation, order checkout form, and printable receipts.
-- **Live Order Tracker**: Enter any Order ID (e.g., `ORD-89241`) to view chronological fulfillment checkpoints and live delivery status.
-- **Support & Ticketing Desk**: Submit inquiries with custom priority levels and look up existing ticket threads.
-- **Multi-Currency Support**: Switch on-the-fly between USD ($), EUR (€), GBP (£), and INR (₹).
-- **Broadcast Announcement Bar**: Dynamic top banner controlled directly from the Admin Panel.
-
-### 🛡️ Administrative Console
-- **Analytics & Revenue Dashboard**: Real-time sales, order volume, average order value, and open ticket metrics.
-- **Inventory & Catalog Management (Full CRUD)**: Add new products, edit price/stock, delete items, and toggle in-stock availability.
-- **Order Fulfillment Manager**: View all placed orders, inspect addresses and items, and update order statuses (*Pending*, *Processing*, *Shipped*, *Delivered*, *Cancelled*). Changes instantly reflect in the customer order tracker.
-- **Support Helpdesk**: View inquiries, reply to clients, and mark tickets resolved.
-- **Live Broadcast Editor**: Edit announcement text, toggle banner visibility, and change styling.
-- **Security & Backup**: Audit logs of all logins and updates, JSON database backup export and restore, and factory reset option.
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`

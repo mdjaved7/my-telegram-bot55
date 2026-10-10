@@ -1,0 +1,6 @@
+{
+  "name": "All Story FM — Audio Stories & Instant Delivery Bot",
+  "description": "All Story FM: Pocket FM style premium audio story platform with instant Telegram bot episode delivery, payment verification, and admin management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
