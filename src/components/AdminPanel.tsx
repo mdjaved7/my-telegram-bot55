@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+　import React, { useState } from 'react';
 import {
   X,
   Lock,
@@ -140,12 +140,13 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
     setIsNewStory(true);
   };
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  // मल्टीपल फाइल्स (Cover, QR, Audio) अपलोड करने के लिए नया फंक्शन
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>, fieldName: string) => {
     const file = e.target.files?.[0];
     if (file && editingStory) {
       const reader = new FileReader();
       reader.onload = () => {
-        setEditingStory({ ...editingStory, image: reader.result as string });
+        setEditingStory({ ...editingStory, [fieldName]: reader.result } as any);
       };
       reader.readAsDataURL(file);
     }
@@ -664,11 +665,82 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                               <input
                                 type="file"
                                 accept="image/*"
-                                onChange={handleImageUpload}
+                                onChange={(e) => handleFileUpload(e, 'image')}
                                 className="hidden"
                               />
                             </label>
                           </div>
+                        </div>
+                      </div>
+
+                      {/* QR Code Upload & URL */}
+                      <div>
+                        <label className="block text-xs font-semibold text-zinc-300 mb-1">
+                          QR कोड (QR Image Upload or URL):
+                        </label>
+                        <div className="flex items-center gap-3">
+                          <div className="w-16 h-20 rounded-xl overflow-hidden bg-black border border-zinc-700 shrink-0">
+                            {(editingStory as any).qrImage ? (
+                              <img
+                                src={(editingStory as any).qrImage}
+                                alt="QR preview"
+                                className="w-full h-full object-cover"
+                              />
+                            ) : (
+                              <div className="w-full h-full flex items-center justify-center text-zinc-600">
+                                <Image className="w-5 h-5" />
+                              </div>
+                            )}
+                          </div>
+                          <div className="flex-1 space-y-2">
+                            <input
+                              type="text"
+                              value={(editingStory as any).qrImage || ''}
+                              onChange={(e) =>
+                                setEditingStory({ ...editingStory, qrImage: e.target.value } as any)
+                              }
+                              placeholder="QR Image URL..."
+                              className="w-full px-3 py-1.5 rounded-xl bg-zinc-900 border border-zinc-700 text-xs text-white"
+                            />
+                            <label className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-xs text-zinc-200 cursor-pointer">
+                              <Upload className="w-3.5 h-3.5" />
+                              <span>QR कोड अपलोड करें</span>
+                              <input
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => handleFileUpload(e, 'qrImage')}
+                                className="hidden"
+                              />
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Audio File Upload & URL */}
+                      <div>
+                        <label className="block text-xs font-semibold text-zinc-300 mb-1">
+                          ऑडियो फ़ाइल (Audio URL or Upload):
+                        </label>
+                        <div className="flex-1 space-y-2">
+                          <input
+                            type="text"
+                            value={(editingStory as any).audioUrl || ''}
+                            onChange={(e) =>
+                              setEditingStory({ ...editingStory, audioUrl: e.target.value } as any)
+                            }
+                            placeholder="Audio File URL..."
+                            className="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-zinc-700 text-xs text-white"
+                          />
+                          <label className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-xs text-zinc-200 cursor-pointer">
+                            <Upload className="w-3.5 h-3.5" />
+                            <span>ऑडियो अपलोड करें</span>
+                            <input
+                              type="file"
+                              accept="audio/*"
+                              onChange={(e) => handleFileUpload(e, 'audioUrl')}
+                              className="hidden"
+                            />
+                          </label>
                         </div>
                       </div>
 
@@ -804,7 +876,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                             : 'Show 5-card fanned carousel on app launch'}
                         </div>
                       </div>
-                      <input
+                     <input
                         type="checkbox"
                         checked={tempLoadingConfig.enabled}
                         onChange={(e) =>
