@@ -1,17 +1,14 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+<img width="1200" height="475" alt="all story FM" src="https://res.cloudinary.com/dtz0urit6/image/upload/q_auto:best,f_jpg/cloudinary-tools-uploads/xtrvj3yl5fwrlrerrlu3" />
 </div>
 
-# Run and deploy your AI Studio app
+# all story FM
 
 This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/13824383-be20-4f05-be22-3a4ddcab1616
 
 ## Run Locally
 
 **Prerequisites:**  Node.js
-
 
 1. Install dependencies:
    `npm install`
